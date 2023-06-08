@@ -1,0 +1,17 @@
+.card{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgba(255, 255, 255, 0.25);
+    box-sizing: content-box;
+    backdrop-filter: blur(5px);
+    transition: .2s;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+body{
+    background-image: url(../img/Sunset\ Over\ Minimalistic\ Mountains\ [2560\ x\ 1440].png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
