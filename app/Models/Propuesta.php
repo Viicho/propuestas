@@ -10,10 +10,10 @@ class Propuesta extends Model
 {
     use HasFactory;
     protected $table = 'propuestas';
-    protected $primaryKey = 'id';
 
 
-    public function estudiantes():BelongsTo{
+
+    public function estudiante():BelongsTo{
         return $this->belongsTo(Estudiante::class);
     }
 

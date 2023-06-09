@@ -1,18 +1,18 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="admin.css">
-</head>
-
-<body>
-  <ul class="mb-4 p-3 mt-3 d-flex justify-content-center align-items-center nav nav-tabs" id="myTab" role="tablist">
-    <a href="{{route('login.index')}}" class="me-5 btn btn-primary">Volver</a>
+@extends('templates.master')
+@section('contenido-principal')
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('login.index')}}">Login</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Administrador</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <ul class="mb-4 d-flex justify-content-center align-items-center nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
         role="tab" aria-controls="home-tab-pane" aria-selected="true">Agregar Estudiante</button>
@@ -32,7 +32,7 @@
   </ul>
   <div class="container tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-      <h1 class="mb-4">Agregar estudiante</h1>
+      <h2 class="mb-4">Agregar estudiante</h2>
       {{-- Form estudiantes --}}
       <form action="{{route('estudiante.store')}}" method="POST">
         @csrf
@@ -56,7 +56,7 @@
       </form>
     </div>
     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-      <h1>Agregar Profesores</h1>
+      <h2 class="mb-4">Agregar profesor</h2>
       {{-- Form Profesores --}}
       <form action="{{route('profesor.store')}}" method="POST">
         @csrf
@@ -76,33 +76,33 @@
       </form>
     </div>
     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-      <h1>Lista de Estudiantes</h1>
-      <table class="table">
+      <h2 class="mb-4">Lista de Estudiantes</h2>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Email</th>
-            <th scope="col">Propuestas</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($estudiantes as $estudiante)
+          @foreach ($estudiantes as $num => $estudiante)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{$num+1}}</th>
                 <td>{{$estudiante->nombre}}</td>
                 <td>{{$estudiante->apellido}}</td>
                 <td>{{$estudiante->email}}</td>
-                <td><a href="{{route('administradorEstudiante.show',$estudiante->rut)}}" class="btn btn-success">Ver</a></td> 
+                <td class="text-end pe-4"><a href="{{route('administradorEstudiante.show',$estudiante->rut)}}" class="btn btn-success">Ver propuesta</a></td> 
             </tr>
           @endforeach
         </tbody>
       </table>
     </div>
     <div class="tab-pane fade" id="profe-tab-pane" role="tabpanel" aria-labelledby="profe-tab" tabindex="0">
-      <h1>Lista de Profesores</h1>
-      <table class="table">
+      <h2 class="mb-4">Lista de Profesores</h2>
+      <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -123,10 +123,4 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+@endsection

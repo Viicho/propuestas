@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profesor;
+use App\Models\Propuesta;
 
 class ProfesorController extends Controller
 {
@@ -11,11 +12,18 @@ class ProfesorController extends Controller
      * Display a listing of the resource.
      */
 
-    
+    public function propuestas(Profesor $profesor)
+    {
+        $propuestas = Propuesta::all();
+        return view('profesor.propuestas',compact(['profesor','propuestas']));
+    }
+
+
+
     public function index()
     {
         $profesores = Profesor::orderby('apellido')->orderby('nombre')->get();
-        return view('profesor.index',compact('profesores'));
+        return view('profesor.listaProfesor',compact('profesores'));
     }
 
     /**

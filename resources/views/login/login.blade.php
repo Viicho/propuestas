@@ -17,10 +17,10 @@
                     <i class="fs-1 pt-3 text-center fas fa-cog"></i>
                     <div class="card-body d-flex flex-column">
                       <h5 class="text-center card-title">Administrador</h5>
-                      <p class="flex-fill card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, qui.
+                      <p class="flex-fill card-text">
+                        Si eres administrador, haz click en el boton <i>Ingresar</i>.
                       </p>
-                      <a href="{{route('administrador.index')}}" class="btn btn-primary">Go somewhere</a>
+                      <a href="{{route('administrador.index')}}" class="btn btn-primary">Ingresar</a>
                     </div>
                 </div>
             </div>
@@ -29,10 +29,10 @@
                     <i class="fs-1 pt-3 text-center fas fa-glasses"></i>
                     <div class="card-body d-flex flex-column">
                       <h5 class="text-center card-title">Profesor</h5>
-                      <p class="flex-fill card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, nostrum. In fuga consequuntur quas dolores ullam et mollitia asperiores nobis.
+                      <p class="flex-fill card-text">
+                        Si eres profesor, haz click en el botón <i>Ingresar</i>.
                       </p>
-                      <a href="{{route('profesor.index')}}" class="btn btn-primary">Go somewhere</a>
+                      <a href="{{route('profesor.lista')}}" class="btn btn-primary">Ingresar</a>
                     </div>
                 </div>
             </div>
@@ -41,8 +41,10 @@
                     <i class="fs-1 pt-3 text-center fas fa-user-graduate"></i>
                     <div class="card-body d-flex flex-column">
                       <h5 class="text-center card-title">Estudiante</h5>
-                      <p class="flex-fill card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="{{route('estudiante.lista')}}" class="btn btn-primary">Go somewhere</a>
+                      <p class="flex-fill card-text">
+                        Si eres estudiante, haz click en el botón <i>Ingresar</i>.
+                      </p>
+                      <a href="{{route('estudiante.lista')}}" class="btn btn-primary">Ingresar</a>
                     </div>
                 </div>
             </div>

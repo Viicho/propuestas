@@ -12,6 +12,18 @@ class EstudianteController extends Controller
      * Display a listing of the resource.
      */
 
+    public function pdf(Request $request, Estudiante $estudiante)
+    {
+        $propuesta = new Propuesta();
+        $propuesta->documento = $request->documento->store('public/propuestas');
+        $propuesta->fecha = date("YmdHis");
+        $propuesta->estado = 0;
+        $propuesta->estudiante_rut = $estudiante->rut;
+        $propuesta->save();
+
+        return redirect()->route('estudiante.show',$estudiante->rut);
+    }
+
     public function lista(){
         $estudiantes = Estudiante::all();
         return view('estudiante.listaEstudiante',compact('estudiantes'));

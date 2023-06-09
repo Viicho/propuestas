@@ -27,10 +27,13 @@ Route::get('/administrador',[AdministradorController::class, 'index'])->name("ad
 Route::get('/administrador/{estudiante}',[AdministradorController::class, 'show'])->name("administradorEstudiante.show");
 
 Route::post('/estudiante',[EstudianteController::class,'store'])->name('estudiante.store');
+Route::post('/estudiante/pdf/{estudiante}',[EstudianteController::class,'pdf'])->name('estudiante.pdf');
 Route::post('/profesor',[ProfesorController::class,'store'])->name('profesor.store');
 
 
-Route::get('/profesores',[ProfesorController::class, 'index'])->name('profesor.index');
+Route::get('/profesores',[ProfesorController::class, 'index'])->name('profesor.lista');
+Route::get('/profesores/{profesor}',[ProfesorController::class, 'propuestas'])->name('profesor.propuestas');
+
 
 
 

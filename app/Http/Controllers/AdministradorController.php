@@ -17,7 +17,7 @@ class AdministradorController extends Controller
     {
         $profesores = Profesor::all();
         $estudiantes = Estudiante::all();
-        return view("admin.admin",compact(['estudiantes','profesores']));
+        return view("admin.index",compact(['estudiantes','profesores']));
     }
 
     /**
@@ -39,10 +39,9 @@ class AdministradorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $rut)
+    public function show(Estudiante $estudiante)
     {
-        $propuestas = Propuesta::where('estudiante_rut',$rut)->get();
-        $estudiante = Estudiante::find($rut);
+        $propuestas = Propuesta::where('estudiante_rut',$estudiante->rut)->get();
         return view('admin.adminEstudiante',compact(['estudiante','propuestas']));
     }
 
