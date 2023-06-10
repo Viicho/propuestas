@@ -6,6 +6,7 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\Profesor_propuestaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,13 +29,17 @@ Route::get('/administrador/{estudiante}',[AdministradorController::class, 'show'
 
 Route::post('/estudiante',[EstudianteController::class,'store'])->name('estudiante.store');
 Route::post('/estudiante/pdf/{estudiante}',[EstudianteController::class,'pdf'])->name('estudiante.pdf');
+
+Route::get('/estudiante/pdf/{propuesta}',[EstudianteController::class,'pdfGet'])->name('estudiante.pdfGet');
+
 Route::post('/profesor',[ProfesorController::class,'store'])->name('profesor.store');
+
 
 
 Route::get('/profesores',[ProfesorController::class, 'index'])->name('profesor.lista');
 Route::get('/profesores/{profesor}',[ProfesorController::class, 'propuestas'])->name('profesor.propuestas');
 
-
+Route::post('/profesor_propuesta/{profesor}/{propuesta}',[Profesor_propuestaController::class, 'store'])->name('profesor_propuesta.store');
 
 
 Route::put('/administrador/{id}',[AdministradorController::class, 'update'])->name("administrador.update");

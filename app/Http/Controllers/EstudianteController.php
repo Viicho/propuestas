@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
 use App\Models\Propuesta;
+use Illuminate\Support\Facades\Storage;
 
 class EstudianteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    public function pdfGet(Propuesta $propuesta){
+
+        return Storage::download($propuesta->documento);
+    }
+
 
     public function pdf(Request $request, Estudiante $estudiante)
     {

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Propuesta extends Model
 {
@@ -17,7 +18,14 @@ class Propuesta extends Model
         return $this->belongsTo(Estudiante::class);
     }
 
-    public function profesores(){
+    public function profesores():BelongsToMany{
         return $this->belongsToMany(Profesor::class);
     }
+
+    public function comentariosConPivot():BelongsToMany{
+        return $this->belongsToMany(Profesor::class)->withPivot(['comentario']);
+    }
+
+
+    
 }

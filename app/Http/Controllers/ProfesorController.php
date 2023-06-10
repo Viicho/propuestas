@@ -15,6 +15,15 @@ class ProfesorController extends Controller
     public function propuestas(Profesor $profesor)
     {
         $propuestas = Propuesta::all();
+         foreach ($propuestas as $num => $propuesta){
+            $comentarios = $propuesta->comentariosConPivot;
+            foreach ($comentarios as $key => $comentario) {
+                if ($comentario->pivot->profesor_id == $profesor->id){
+                    $propuesta->comentario = $comentario->pivot->comentario;
+                }
+            }
+        }
+
         return view('profesor.propuestas',compact(['profesor','propuestas']));
     }
 

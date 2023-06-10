@@ -21,13 +21,13 @@ $estados = [0 => 'Esperando revision',1=>'Modificar Propuesta',2=>'Rechazado',3=
             <div class="col">
               <br>
               <h3>Propuestas de {{$estudiante->nombre}}</h3>
-              <h5>A continuacion puedes ver el listado de las propuestas</h5>
+              <h5>A continuación puedes ver el listado de las propuestas</h5>
               <hr>
               <table class="table table-borderless table-striped table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre Propuesta</th>
+                    <th scope="col">PDF</th>
                     <th scope="col">Estado</th>
                     <th></th>
                   </tr>
@@ -36,14 +36,13 @@ $estados = [0 => 'Esperando revision',1=>'Modificar Propuesta',2=>'Rechazado',3=
                     @foreach ($propuestas as $num => $propuesta)
                       <tr>
                         <th scope="row">{{$num+1}}</th>
-                        <td>{{$propuesta->documento}}</td>
+                        <td><a href="{{route('estudiante.pdfGet',$propuesta->id)}}">Descargar</a></td>
                         <td>{{$estados[$propuesta->estado]}}</td>
                         <td class="text-end pe-4">
                             <!-- Button trigger modal -->
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{$propuesta->id}}">
                             Cambiar estado
                         </button>
-
                         </td> 
                       </tr>
                     @endforeach

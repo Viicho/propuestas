@@ -22,7 +22,7 @@ $estados = [0 => 'Esperando revision',1=>'Modificar Propuesta',2=>'Rechazado',3=
               <h2 class="text-center">Bienvenido {{$estudiante->nombre}}</h2>
               <br>
 			        <h3>Tus propuestas</h3>
-              <h5>A continuacion puedes ver el listado de tus propuestas</h5>
+              <h5>A continuación puedes ver el listado de tus propuestas</h5>
 			        <hr>
               <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Agregar Propuesta</button>
               <br><br>
@@ -40,10 +40,10 @@ $estados = [0 => 'Esperando revision',1=>'Modificar Propuesta',2=>'Rechazado',3=
                     @foreach ($propuestas as $num => $propuesta)
                       <tr>
                         <th scope="row">{{$num+1}}</th>
-                        <td><a target="_blank" href="{{$propuesta->documento}}">Ver PDF</a></td>
+                        <td><a href="{{route('estudiante.pdfGet',$propuesta->id)}}">Descargar</a> </td>
                         <td>{{$propuesta->fecha}}</td>
                         <td>{{$estados[$propuesta->estado]}}</td>
-                        <td class="text-end pe-4"><a class="btn btn-success">Revisar comentario</a></td> 
+                        <td class="text-end pe-4"><button class="btn btn-success">Revisar comentario</button></td> 
                       </tr>
                     @endforeach
                 </tbody>
@@ -60,9 +60,11 @@ $estados = [0 => 'Esperando revision',1=>'Modificar Propuesta',2=>'Rechazado',3=
           <form method="post" class="p-5" enctype="multipart/form-data" action="{{route('estudiante.pdf',$estudiante->rut)}}">
             @csrf
             <input accept=".pdf" type="file" name="documento">
+            <br><br>
             <button class="btn btn-success" type="submit">Guardar PDF</button>
-        </form>                
+          </form>                
         </div>
       </div>
     </div>
+    
 @endsection
